@@ -7,7 +7,7 @@ RUN curl -SL https://github.com/Wind4/vlmcsd/archive/master.tar.gz \
   && make -C /vlmcsd-master
 RUN apk del curl g++ make
 
-ENV PATH /vlmcsd-master:$PATH
+ENV PATH /vlmcsd-master/bin:$PATH
 EXPOSE 1688
 
-ENTRYPOINT ["vlmcsd", "-D", "-e"]
+ENTRYPOINT ["vlmcsd", "-D", "-e", "-j", "/vlmcsd-master/etc/vlmcsd.kmd"]
